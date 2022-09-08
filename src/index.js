@@ -14,19 +14,19 @@ currentDay.innerHTML = day;
 let tomorrow = document.querySelector("#tomorrow");
 let currentTomorrow = days[now.getDay() + 1];
 if (currentTomorrow === undefined) {
-  currentTomorrow = days[now.getDay() - 3];
+  currentTomorrow = days[now.getDay() - 6];
 }
 tomorrow.innerHTML = currentTomorrow;
 let tomorrow2 = document.querySelector("#tomorrow2");
 let currentTomorrow2 = days[now.getDay() + 2];
 if (currentTomorrow2 === undefined) {
-  currentTomorrow2 = days[now.getDay() - 3];
+  currentTomorrow2 = days[now.getDay() - 5];
 }
 tomorrow2.innerHTML = currentTomorrow2;
 let tomorrow3 = document.querySelector("#tomorrow3");
 let currentTomorrow3 = days[now.getDay() + 3];
 if (currentTomorrow3 === undefined) {
-  currentTomorrow3 = days[now.getDay() - 3];
+  currentTomorrow3 = days[now.getDay() - 4];
 }
 tomorrow3.innerHTML = currentTomorrow3;
 let tomorrow4 = document.querySelector("#tomorrow4");
