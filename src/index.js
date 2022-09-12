@@ -46,6 +46,7 @@ if (minutes < 10) {
 let currentMinute = document.querySelector("#minute");
 currentMinute.innerHTML = minutes;
 
+//Current location
 function search(event) {
   event.preventDefault();
   let cityForm = document.querySelector("#city");
@@ -56,24 +57,39 @@ function search(event) {
 
 let city = document.querySelector("#inputCity");
 city.addEventListener("submit", search);
+
+// Function get Api response and change weather value
+
 function showTemperature(response) {
+  //Change city
   let result = document.querySelector("h1");
   result.innerHTML = response.data.name;
+  //Change temp
   let temperature = response.data.main.temp;
   let all = document.querySelector("h2");
   all.innerHTML = `${Math.round(temperature)}°C`;
+  //Change humidity
   let humidity = document.querySelector(".humid");
   let currentHumid = response.data.main.humidity;
   humidity.innerHTML = `${currentHumid} % : Humidity`;
+  //Change wind
   let wind = document.querySelector(".wind");
   let currentWind = Math.round(response.data.wind.speed);
   wind.innerHTML = `${currentWind} m/s : Wind`;
-
+  //Change mim-max temp
   let minMaxTemp = document.querySelector(".minMax");
   let currentMinMax = `${Math.round(
     response.data.main.temp_min
   )} - ${Math.round(response.data.main.temp_max)}`;
   minMaxTemp.innerHTML = `${currentMinMax} °C : Temperature`;
+  //Change top icon
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  //openweathermap.org/img/wn/10d@2x.png
+  http: console.log(response.data.weather[0].icon);
 }
 
 function showPosition(position) {
