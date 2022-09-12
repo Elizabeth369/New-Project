@@ -88,8 +88,8 @@ function showTemperature(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  //openweathermap.org/img/wn/10d@2x.png
-  http: console.log(response.data.weather[0].icon);
+
+  console.log(response.data.weather[0].icon);
 }
 
 function showPosition(position) {
