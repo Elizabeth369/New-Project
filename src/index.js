@@ -66,7 +66,7 @@ function showTemperature(response) {
   result.innerHTML = response.data.name;
   //Change temp
   let temperature = response.data.main.temp;
-  let all = document.querySelector("h2");
+  let all = document.querySelector("#tempCels");
   all.innerHTML = `${Math.round(temperature)}°C`;
   //Change humidity
   let humidity = document.querySelector(".humid");
