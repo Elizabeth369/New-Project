@@ -59,15 +59,20 @@ let city = document.querySelector("#inputCity");
 city.addEventListener("submit", search);
 
 // Function get Api response and change weather value
+function searchbyDefolt(name) {
+  let apiKey = `c95d60a1e3adbeb286133f1ebebc2579`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
+}
 
 function showTemperature(response) {
+  celsiusTemperature = response.data.main.temp;
   //Change city
   let result = document.querySelector("#cityText");
   result.innerHTML = response.data.name;
   //Change temp
-  let temperature = response.data.main.temp;
   let all = document.querySelector("#tempCels");
-  all.innerHTML = `${Math.round(temperature)}°`;
+  all.innerHTML = `${Math.round(celsiusTemperature)}`;
   //Change humidity
   let humidity = document.querySelector(".humid");
   let currentHumid = response.data.main.humidity;
@@ -106,15 +111,17 @@ let button = document.querySelector(".btn2");
 button.addEventListener("click", getCurrentPosition);
 
 // Celcius to fahrenheit
-let celsiusTemperature = null;
 
 function displayFarhenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#tempCels");
-  let fahrenheitTemperature = (temperatureElement.innerHTML * 9) / 5 + 32;
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
 
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
+let celsiusTemperature = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFarhenheitTemperature);
+
+searchbyDefolt("Lisbon");
