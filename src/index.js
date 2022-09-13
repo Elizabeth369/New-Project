@@ -46,7 +46,7 @@ if (minutes < 10) {
 let currentMinute = document.querySelector("#minute");
 currentMinute.innerHTML = minutes;
 
-//Current location
+//Current location function
 function search(event) {
   event.preventDefault();
   let cityForm = document.querySelector("#city");
@@ -54,7 +54,7 @@ function search(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityForm.value}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
-
+// Form value
 let city = document.querySelector("#inputCity");
 city.addEventListener("submit", search);
 
@@ -66,11 +66,11 @@ function searchbyDefolt(name) {
 }
 
 function showTemperature(response) {
-  celsiusTemperature = response.data.main.temp;
   //Change city
   let result = document.querySelector("#cityText");
   result.innerHTML = response.data.name;
   //Change temp
+  celsiusTemperature = response.data.main.temp;
   let all = document.querySelector("#tempCels");
   all.innerHTML = `${Math.round(celsiusTemperature)}`;
   //Change humidity
@@ -95,7 +95,7 @@ function showTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
-
+// Current location button
 function showPosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -125,6 +125,7 @@ function displayFarhenheitTemperature(event) {
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#tempCels");
+  //add active class
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
