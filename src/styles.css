@@ -92,3 +92,12 @@ i {
   margin: 0 auto;
   width: 550px;
 }
+.active {
+  color: white;
+  cursor: default;
+  text-decoration: none;
+}
+.active:hover {
+  text-decoration: none;
+  color: white;
+}
