@@ -62,12 +62,12 @@ city.addEventListener("submit", search);
 
 function showTemperature(response) {
   //Change city
-  let result = document.querySelector("h1");
+  let result = document.querySelector("#cityText");
   result.innerHTML = response.data.name;
   //Change temp
   let temperature = response.data.main.temp;
   let all = document.querySelector("#tempCels");
-  all.innerHTML = `${Math.round(temperature)}°C`;
+  all.innerHTML = `${Math.round(temperature)}°`;
   //Change humidity
   let humidity = document.querySelector(".humid");
   let currentHumid = response.data.main.humidity;
