@@ -101,7 +101,13 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 5) {
+    if (
+      index === 1 ||
+      index === 2 ||
+      index === 3 ||
+      index === 4 ||
+      index === 5
+    ) {
       forecastHTML =
         forecastHTML +
         `
