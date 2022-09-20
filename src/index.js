@@ -34,13 +34,17 @@ function search(event) {
 let city = document.querySelector("#inputCity");
 city.addEventListener("submit", search);
 
-// Function get Api response and change weather value
+// Function get Api response and change weather value by defolt
 function searchbyDefolt(name) {
   let apiKey = `c95d60a1e3adbeb286133f1ebebc2579`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
-function displayForecast() {
+
+// Add day at the botton of app
+
+function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
@@ -67,8 +71,19 @@ function displayForecast() {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
 }
+
+// Forecast API
+
+function getForecast(coordinates) {
+  let apiKey = `5da7b2dc058f07286fea39c4cee516a3`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+  console.log(apiUrl);
+}
+
+//Current weather function
+
 function showTemperature(response) {
   //Change city
   let result = document.querySelector("#cityText");
@@ -98,6 +113,7 @@ function showTemperature(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  getForecast(response.data.coord);
 }
 // Current location button
 function showPosition(position) {
@@ -107,7 +123,6 @@ function showPosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
-displayForecast();
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }

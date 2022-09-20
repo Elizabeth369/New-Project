@@ -104,6 +104,7 @@ i {
   color: white;
 }
 .weather-forecast {
+  margin-left: 25px;
   color: white;
 }
 .weather-forecast-temperature-min {
