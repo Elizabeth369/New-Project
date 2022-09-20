@@ -185,4 +185,4 @@ let button = document.querySelector(".btn2");
 button.addEventListener("click", getCurrentPosition);
 
 let celsiusTemperature = null;
-searchbyDefolt("Lisbon");
+searchbyDefolt("Odesa");
