@@ -11,30 +11,6 @@ let days = [
 let day = days[now.getDay()];
 let currentDay = document.querySelector("#data");
 currentDay.innerHTML = day;
-let tomorrow = document.querySelector("#tomorrow");
-let currentTomorrow = days[now.getDay() + 1];
-if (currentTomorrow === undefined) {
-  currentTomorrow = days[now.getDay() - 6];
-}
-tomorrow.innerHTML = currentTomorrow;
-let tomorrow2 = document.querySelector("#tomorrow2");
-let currentTomorrow2 = days[now.getDay() + 2];
-if (currentTomorrow2 === undefined) {
-  currentTomorrow2 = days[now.getDay() - 5];
-}
-tomorrow2.innerHTML = currentTomorrow2;
-let tomorrow3 = document.querySelector("#tomorrow3");
-let currentTomorrow3 = days[now.getDay() + 3];
-if (currentTomorrow3 === undefined) {
-  currentTomorrow3 = days[now.getDay() - 4];
-}
-tomorrow3.innerHTML = currentTomorrow3;
-let tomorrow4 = document.querySelector("#tomorrow4");
-let currentTomorrow4 = days[now.getDay() + 4];
-if (currentTomorrow4 === undefined) {
-  currentTomorrow4 = days[now.getDay() - 3];
-}
-tomorrow4.innerHTML = currentTomorrow4;
 
 let hours = now.getHours();
 let currentHours = document.querySelector("#hour");
@@ -64,7 +40,25 @@ function searchbyDefolt(name) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
-
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHtml = "";
+  forecastElement.innerHTML = `<div class="row">
+              <div class="col-2">
+                <div class="weather-forecast-date">Thu</div>
+                <img
+                  src="http://openweathermap.org/img/wn/50d@2x.png"
+                  alt=""
+                  width="42"
+                />
+                <div class="weather-forecast-temperatures">
+                  <span class="weather-forecast-temperature-max"> 18° </span>
+                  <span class="weather-forecast-temperature-min"> 12° </span>
+                </div>
+              </div>
+            </div>
+            </div>`;
+}
 function showTemperature(response) {
   //Change city
   let result = document.querySelector("#cityText");
@@ -103,6 +97,7 @@ function showPosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
 }
+displayForecast();
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }

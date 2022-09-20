@@ -68,7 +68,9 @@ h3 {
   padding: 8px 10px;
 }
 .row {
-  margin-left: 35px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 .col-3 {
   width: 120px;
@@ -100,4 +102,10 @@ i {
 .active:hover {
   text-decoration: none;
   color: white;
+}
+.weather-forecast {
+  color: white;
+}
+.weather-forecast-temperature-min {
+  opacity: 0.6;
 }
