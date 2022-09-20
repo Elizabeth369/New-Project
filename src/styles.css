@@ -1,6 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap");
 body {
+  color: #948ae9;
+  font-family: "Roboto", sans-serif;
   background-color: rgb(251, 251, 246);
+}
+.container2 {
+  display: block;
+  margin: 0 auto;
+  width: 550px;
+  box-shadow: 3px 5px 5px rgb(164, 164, 172);
+  background: linear-gradient(180.3deg, #948ae9 5.5%, #7cb9dd 90.2%) no-repeat;
+  border-radius: 10px;
 }
 h1 {
   color: rgb(255, 255, 255);
@@ -42,16 +51,6 @@ h3 {
   margin-left: 310px;
   margin-top: -64px;
   padding: 8px 10px;
-}
-
-.container2 {
-  display: block;
-  margin: 0 auto;
-  width: 550px;
-  box-shadow: 3px 5px 5px rgb(164, 164, 172);
-  font-family: "Roboto", sans-serif;
-  background: linear-gradient(180.3deg, #5a529f 5.5%, #60b9eb 90.2%) no-repeat;
-  border-radius: 10px;
 }
 
 .form1 {

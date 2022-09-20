@@ -12,6 +12,52 @@ let day = days[now.getDay()];
 let currentDay = document.querySelector("#data");
 currentDay.innerHTML = day;
 
+//Change icon from default to custom
+
+function displayImage(icon) {
+  let iconPath = "";
+  if (icon === `01d`) {
+    iconPath =
+      "https://s3.amazonaws.com/shecodesio-production/uploads/files/000/046/610/original/icons8-sun-64.png?1663691589";
+  } else if (icon === `02d`) {
+    iconPath =
+      "https://s3.amazonaws.com/shecodesio-production/uploads/files/000/046/611/original/icons8-partly-cloudy-day-64.png?1663691844";
+  } else if (
+    icon === `03d` ||
+    icon === `04d` ||
+    icon === `03n` ||
+    icon === `04n`
+  ) {
+    iconPath =
+      "https://s3.amazonaws.com/shecodesio-production/uploads/files/000/046/614/original/icons8-cloud-64.png?1663692057";
+  } else if (
+    icon === `09d` ||
+    icon === `09n` ||
+    icon === `10d` ||
+    icon === `10n`
+  ) {
+    iconPath =
+      "https://s3.amazonaws.com/shecodesio-production/uploads/files/000/046/615/original/icons8-rain-64.png?1663692161";
+  } else if (icon === `11d` || icon === `11n`) {
+    iconPath =
+      "https://s3.amazonaws.com/shecodesio-production/uploads/files/000/046/616/original/icons8-storm-64.png?1663692225";
+  } else if (icon === `13d` || icon === `13n`) {
+    iconPath =
+      "https://s3.amazonaws.com/shecodesio-production/uploads/files/000/046/617/original/icons8-snow-64.png?1663692259";
+  } else if (icon === `50d` || icon === `50n`) {
+    iconPath =
+      "https://s3.amazonaws.com/shecodesio-production/uploads/files/000/046/618/original/icons8-fog-64_%281%29.png?1663692331";
+  } else if (icon === `01n`) {
+    iconPath =
+      "https://s3.amazonaws.com/shecodesio-production/uploads/files/000/046/613/original/icons8-new-moon-64.png?1663691991";
+  } else if (icon === `02n`) {
+    iconPath =
+      "https://s3.amazonaws.com/shecodesio-production/uploads/files/000/046/619/original/icons8-night-64_%281%29.png?1663692412";
+  }
+
+  return iconPath;
+}
+
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
@@ -61,13 +107,9 @@ function displayForecast(response) {
         `
       <div class="col-2">
         <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
-        <img
-          src="http://openweathermap.org/img/wn/${
-            forecastDay.weather[0].icon
-          }@2x.png"
-          alt=""
-          width="42"
-        />
+       <img src="${displayImage(forecastDay.weather[0].icon)}"
+            alt="forecastDay.weather[0].description)
+             id="icon"/>
         <div class="weather-forecast-temperatures">
           <span class="weather-forecast-temperature-max"> ${Math.round(
             forecastDay.temp.max
@@ -122,7 +164,7 @@ function showTemperature(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `${displayImage(response.data.weather[0].icon)}`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
   getForecast(response.data.coord);
