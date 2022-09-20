@@ -13,7 +13,7 @@ h3 {
   color: white;
 }
 #units {
-  font-size: 20px;
+  font-size: 30px;
 }
 
 #icon {
@@ -76,33 +76,19 @@ h3 {
   width: 120px;
   border-radius: 10px;
 }
-.col-3:hover {
-  background-color: rgba(99, 92, 165, 0.3);
-}
+
 li {
   color: white;
   list-style: none;
   margin-left: -30px;
 }
-i {
-  font-family: fontawesome !important;
-  color: white;
-  font-size: 30px;
-}
+
 .bottom {
   display: block;
   margin: 0 auto;
   width: 550px;
 }
-.active {
-  color: white;
-  cursor: default;
-  text-decoration: none;
-}
-.active:hover {
-  text-decoration: none;
-  color: white;
-}
+
 .weather-forecast {
   margin-left: 25px;
   color: white;

@@ -142,31 +142,5 @@ function getCurrentPosition() {
 let button = document.querySelector(".btn2");
 button.addEventListener("click", getCurrentPosition);
 
-// Celcius to fahrenheit
-
-function displayFarhenheitTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#tempCels");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  //add active class
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#tempCels");
-  //add active class
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
 let celsiusTemperature = null;
 searchbyDefolt("Lisbon");
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFarhenheitTemperature);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
